@@ -4,14 +4,16 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        DailyData dailyData;
+        DailyData dailyData = new DailyData();
+        String filePath = "flights_and_forecast.json";
+
         try {
-             dailyData = JsonToObjectConverter.convertJsonToObject("flights_and_forecast.json");
+             dailyData = JsonToObjectConverter.convertJsonToObject(filePath);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("файл с исходными данными отсутствует в указанной директории");
         }
 
-        Schedule schedule = new Schedule(dailyData);
-        schedule.printDailySummary();
+        ScheduleManager scheduleManager = new ScheduleManager(dailyData);
+        scheduleManager.printDailySummary();
     }
 }

@@ -14,10 +14,8 @@ public class JsonToObjectConverter {
                 jsonContent.append(line);
             }
             Gson gson = new Gson();
-            DailyData dailyData = (DailyData) gson.fromJson(jsonContent.toString(), DailyData.class);
-            return dailyData;
+            return gson.fromJson(jsonContent.toString(), DailyData.class);
         }
-
     }
 
 
